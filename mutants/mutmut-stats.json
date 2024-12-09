@@ -1,0 +1,79 @@
+{
+    "tests_by_mangled_function_name": {
+        "code.banking_system.x\u01c1Account\u01c1__init__": [
+            "tests/test_banking_system.py::TestBankingSystem::test_create_account",
+            "tests/test_banking_system.py::TestBankingSystem::test_add_fixed_deposit",
+            "tests/test_banking_system.py::TestBankingSystem::test_account_balance",
+            "tests/test_banking_system.py::TestBankingSystem::test_withdraw",
+            "tests/test_banking_system.py::TestBankingSystem::test_deposit",
+            "tests/test_banking_system.py::TestBankingSystem::test_apply_for_loan",
+            "tests/test_banking_system.py::TestBankingSystem::test_login",
+            "tests/test_banking_system.py::TestBankingSystem::test_logout"
+        ],
+        "code.banking_system.x\u01c1BankingSystem\u01c1__init__": [
+            "tests/test_banking_system.py::TestBankingSystem::test_create_account",
+            "tests/test_banking_system.py::TestBankingSystem::test_add_fixed_deposit",
+            "tests/test_banking_system.py::TestBankingSystem::test_account_balance",
+            "tests/test_banking_system.py::TestBankingSystem::test_withdraw",
+            "tests/test_banking_system.py::TestBankingSystem::test_deposit",
+            "tests/test_banking_system.py::TestBankingSystem::test_apply_for_loan",
+            "tests/test_banking_system.py::TestBankingSystem::test_login",
+            "tests/test_banking_system.py::TestBankingSystem::test_logout"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1get_balance": [
+            "tests/test_banking_system.py::TestBankingSystem::test_account_balance"
+        ],
+        "code.banking_system.x\u01c1BankingSystem\u01c1create_account": [
+            "tests/test_banking_system.py::TestBankingSystem::test_create_account",
+            "tests/test_banking_system.py::TestBankingSystem::test_add_fixed_deposit",
+            "tests/test_banking_system.py::TestBankingSystem::test_account_balance",
+            "tests/test_banking_system.py::TestBankingSystem::test_withdraw",
+            "tests/test_banking_system.py::TestBankingSystem::test_deposit",
+            "tests/test_banking_system.py::TestBankingSystem::test_apply_for_loan",
+            "tests/test_banking_system.py::TestBankingSystem::test_login",
+            "tests/test_banking_system.py::TestBankingSystem::test_logout"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1add_fixed_deposit": [
+            "tests/test_banking_system.py::TestBankingSystem::test_add_fixed_deposit"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1_log_transaction": [
+            "tests/test_banking_system.py::TestBankingSystem::test_add_fixed_deposit",
+            "tests/test_banking_system.py::TestBankingSystem::test_deposit",
+            "tests/test_banking_system.py::TestBankingSystem::test_withdraw"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1apply_for_loan": [
+            "tests/test_banking_system.py::TestBankingSystem::test_apply_for_loan"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1deposit": [
+            "tests/test_banking_system.py::TestBankingSystem::test_deposit"
+        ],
+        "code.banking_system.x\u01c1BankingSystem\u01c1login": [
+            "tests/test_banking_system.py::TestBankingSystem::test_login",
+            "tests/test_banking_system.py::TestBankingSystem::test_logout"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1verify_password": [
+            "tests/test_banking_system.py::TestBankingSystem::test_login",
+            "tests/test_banking_system.py::TestBankingSystem::test_logout"
+        ],
+        "code.banking_system.x\u01c1BankingSystem\u01c1logout": [
+            "tests/test_banking_system.py::TestBankingSystem::test_logout"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1set_spending_limit": [
+            "tests/test_banking_system.py::TestBankingSystem::test_withdraw"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1withdraw": [
+            "tests/test_banking_system.py::TestBankingSystem::test_withdraw"
+        ]
+    },
+    "duration_by_test": {
+        "tests/test_banking_system.py::TestBankingSystem::test_account_balance": 5.6957999999995845e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_add_fixed_deposit": 5.333299999998875e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_apply_for_loan": 4.5916999999950914e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_create_account": 4.816699999998786e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_deposit": 4.91669999999611e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_login": 4.620899999996375e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_logout": 4.362499999999159e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_withdraw": 6.062499999998083e-05
+    },
+    "stats_time": 0.16067299999999998
+}
