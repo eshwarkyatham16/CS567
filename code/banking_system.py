@@ -38,15 +38,6 @@ class Account:
             raise ValueError("Deposit amount must be positive.")
 
     def withdraw(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("Withdrawal amount must be positive.")
-        if self.spending_limit and amount > self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("Withdrawal amount exceeds spending limit.")
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -165,12 +156,6 @@ class Account:
             raise ValueError("No loan outstanding.")
 
     def transfer_money(self, amount, recipient_account):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Transfer failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid transfer amount: {amount}")
-            raise ValueError("Transfer amount must be positive.")
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")

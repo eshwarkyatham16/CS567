@@ -12,6 +12,8 @@ class TestBankingSystem(unittest.TestCase):
         self.banking_system = BankingSystem()
         self.banking_system.create_account('123456', 'John Doe', 'savings', 5000, 'password123')
         self.banking_system.create_account('654321', 'Jane Smith', 'checking', 1000, 'password456')
+        self.banking_system.create_account('123456789', 'Alice', 'savings', 2000, 'alicepass')  # Add Alice account
+        self.banking_system.create_account('987654321', 'Bob', 'checking', 1500, 'bobpass')  # Add Bob account
 
     def test_create_account(self):
         """Test account creation with valid and invalid input."""
@@ -175,6 +177,41 @@ class TestBankingSystem(unittest.TestCase):
         with self.assertRaises(ValueError):
             account.repay_loan(6000)
 
+    def test_set_spending_limit(self):
+        limit = 1500
+        
+        account = self.banking_system.accounts['123456']
+        account.set_spending_limit(limit)
+
+        self.assertEqual(account.spending_limit, limit)
+        
+        self.assertIn(f"Spending limit set to {limit}", account.notifications)
+
+    def test_add_fixed_deposit(self):
+        amount = 0
+        duration_in_months = 12
+        rate = 5.0
+
+        account = self.banking_system.accounts['123456']
+        account.add_fixed_deposit(amount, duration_in_months, rate)
+        initial_balance = account.get_balance()
+
+        self.assertEqual(account.balance, initial_balance - amount)
+
+        self.assertEqual(len(account.fixed_deposits), 1)
+        fd = account.fixed_deposits[0]
+        self.assertEqual(fd["amount"], amount)
+        self.assertEqual(fd["duration"], duration_in_months)
+        self.assertEqual(fd["rate"], rate)
+
+        expected_maturity_date = (datetime.now() + timedelta(days=duration_in_months * 30)).strftime("%Y-%m-%d")
+        self.assertEqual(fd["maturity_date"], expected_maturity_date)
+
+        expected_maturity_amount = amount * ((1 + (rate / 100)) ** (duration_in_months / 12))
+        self.assertEqual(fd["maturity_amount"], round(expected_maturity_amount, 2))
+
+        self.assertIn(f"FD created in your account: {fd}", account.notifications)
+
     def test_login_success(self):
         result = self.banking_system.login('123456', 'password123')
         self.assertTrue(result)
@@ -197,7 +234,7 @@ class TestBankingSystem(unittest.TestCase):
 
     def test_list_accounts(self):
         accounts = self.banking_system.list_accounts()
-        self.assertEqual(len(accounts), 2)
+        self.assertEqual(len(accounts), 4)
         self.assertEqual(accounts[0].name, 'John Doe')
         self.assertEqual(accounts[1].name, 'Jane Smith')
 
@@ -212,6 +249,11 @@ class TestBankingSystem(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             self.banking_system.set_interest_rate('business', 4.0)
         self.assertEqual(str(context.exception), "Invalid account type. Choose 'savings' or 'checking'.")
+
+    def test_create_account_invalid_account_number(self):
+        """Test account creation with invalid account number."""
+        with self.assertRaises(ValueError):
+            self.banking_system.create_account('123456789', 'Test User', 'checking', 500, 'password123')
 
 if __name__ == '__main__':
     unittest.main()
