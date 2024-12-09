@@ -3,7 +3,6 @@ from datetime import datetime, timedelta
 from code.banking_system import BankingSystem, Account
 import logging
 
-# Disable logging for test output readability
 logging.disable(logging.CRITICAL)
 
 class TestBankingSystem(unittest.TestCase):
@@ -11,7 +10,6 @@ class TestBankingSystem(unittest.TestCase):
     def setUp(self):
         """Set up the BankingSystem instance before each test."""
         self.banking_system = BankingSystem()
-        # Create a test account
         self.banking_system.create_account('123456', 'John Doe', 'savings', 5000, 'password123')
         self.banking_system.create_account('654321', 'Jane Smith', 'checking', 1000, 'password456')
 
@@ -22,7 +20,6 @@ class TestBankingSystem(unittest.TestCase):
         self.assertEqual(account.name, 'New User')
         self.assertEqual(account.account_type, 'savings')
 
-        # Test duplicate account creation
         with self.assertRaises(ValueError):
             self.banking_system.create_account('123456', 'Test User', 'checking', 500, 'password123')
 
@@ -35,11 +32,9 @@ class TestBankingSystem(unittest.TestCase):
         self.assertEqual(account1.balance, 4500)
         self.assertEqual(account2.balance, 1500)
 
-        # Test insufficient balance
         with self.assertRaises(ValueError):
             account1.transfer_money(10000, account2)
 
-        # Test overdraft protection
         account1.set_overdraft_protection(True)
         account1.transfer_money(5000, account2)
         self.assertEqual(account1.balance, -500)
@@ -55,7 +50,7 @@ class TestBankingSystem(unittest.TestCase):
 
         account.set_overdraft_protection(False)
         with self.assertRaises(ValueError):
-            account.withdraw(1000)  # Disallowed without overdraft
+            account.withdraw(1000) 
 
     def test_notifications(self):
         """Test notification functionality."""
@@ -73,7 +68,7 @@ class TestBankingSystem(unittest.TestCase):
             account.deposit(500)
 
         account.activate_account()
-        account.deposit(500)  # Should work after activation
+        account.deposit(500)  
         self.assertEqual(account.balance, 5500)
 
     def test_password_change(self):
@@ -82,7 +77,6 @@ class TestBankingSystem(unittest.TestCase):
         account.change_password('password123', 'newpassword')
         self.assertTrue(account.verify_password('newpassword'))
 
-        # Test incorrect old password
         with self.assertRaises(ValueError):
             account.change_password('wrongpassword', 'anotherpassword')
 
@@ -92,7 +86,6 @@ class TestBankingSystem(unittest.TestCase):
         account.change_account_type('checking')
         self.assertEqual(account.account_type, 'checking')
 
-        # Test invalid account type
         with self.assertRaises(ValueError):
             account.change_account_type('invalid')
 
@@ -103,6 +96,55 @@ class TestBankingSystem(unittest.TestCase):
         account.withdraw(500)
         transactions = account.get_transaction_history()
         self.assertEqual(len(transactions), 2)
+
+    def test_deposit_invalid_amount(self):
+        """Test depositing invalid amounts."""
+        account = self.banking_system.accounts['123456']
+
+        with self.assertRaises(ValueError) as context:
+            account.deposit(-100)
+        self.assertEqual(str(context.exception), "Deposit amount must be positive.")
+
+        with self.assertRaises(ValueError) as context:
+            account.deposit(0)
+        self.assertEqual(str(context.exception), "Deposit amount must be positive.")
+
+    def test_get_balance(self):
+        """Test retrieving account balance."""
+        account = self.banking_system.accounts['123456']
+
+        balance = account.get_balance()
+        self.assertEqual(balance, 5000)
+        
+        account.deposit(2000)
+        balance = account.get_balance()
+        self.assertEqual(balance, 7000)
+        
+        account.withdraw(1000)
+        balance = account.get_balance()
+        self.assertEqual(balance, 6000)
+
+    def test_calculate_interest(self):
+        """Test calculating and applying interest to the account balance."""
+        account = self.banking_system.accounts['123456']
+        
+        initial_balance = account.get_balance()
+
+        account.calculate_interest(5) 
+
+        expected_interest = initial_balance * (5 / 100)
+        expected_balance = initial_balance + expected_interest
+
+        self.assertEqual(account.get_balance(), expected_balance)
+
+        self.assertIn(f"Interest added to your account: {expected_interest}. New balance: {expected_balance}", account.notifications)
+        
+        transactions = account.get_transaction_history()
+        self.assertEqual(len(transactions), 1)
+
+        last_transaction = transactions[-1]
+        self.assertEqual(last_transaction['type'], 'Interest')
+        self.assertEqual(last_transaction['amount'], expected_interest)
 
     def test_generate_account_statement(self):
         """Test generating account statement."""
@@ -120,7 +162,6 @@ class TestBankingSystem(unittest.TestCase):
         rd = account.view_recurring_deposit()
         self.assertEqual(rd["monthly_amount"], 500)
 
-        # Test duplicate RD creation
         with self.assertRaises(ValueError):
             account.start_recurring_deposit(100, 6, 3)
 
@@ -131,7 +172,6 @@ class TestBankingSystem(unittest.TestCase):
         account.repay_loan(5000)
         self.assertEqual(account.loan_amount, 5000)
 
-        # Test overpayment
         with self.assertRaises(ValueError):
             account.repay_loan(6000)
 
