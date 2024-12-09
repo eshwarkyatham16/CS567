@@ -1,68 +1,199 @@
 {
     "tests_by_mangled_function_name": {
         "code.banking_system.x\u01c1Account\u01c1__init__": [
-            "tests/test_banking_system.py::TestBankingSystem::test_create_account",
+            "tests/test_banking_system.py::TestBankingSystem::test_apply_for_loan_exceeds_limit",
+            "tests/test_banking_system.py::TestBankingSystem::test_set_spending_limit",
+            "tests/test_banking_system.py::TestBankingSystem::test_create_savings_account_insufficient_balance",
+            "tests/test_banking_system.py::TestBankingSystem::test_deposit_invalid_amount",
+            "tests/test_banking_system.py::TestBankingSystem::test_transaction_history",
+            "tests/test_banking_system.py::TestBankingSystem::test_account_suspension_and_activation",
+            "tests/test_banking_system.py::TestBankingSystem::test_password_change",
+            "tests/test_banking_system.py::TestBankingSystem::test_transfer_money",
+            "tests/test_banking_system.py::TestBankingSystem::test_get_balance",
             "tests/test_banking_system.py::TestBankingSystem::test_add_fixed_deposit",
-            "tests/test_banking_system.py::TestBankingSystem::test_account_balance",
-            "tests/test_banking_system.py::TestBankingSystem::test_withdraw",
-            "tests/test_banking_system.py::TestBankingSystem::test_deposit",
-            "tests/test_banking_system.py::TestBankingSystem::test_apply_for_loan",
-            "tests/test_banking_system.py::TestBankingSystem::test_login",
-            "tests/test_banking_system.py::TestBankingSystem::test_logout"
+            "tests/test_banking_system.py::TestBankingSystem::test_overdraft_protection",
+            "tests/test_banking_system.py::TestBankingSystem::test_set_interest_rate_invalid_account_type",
+            "tests/test_banking_system.py::TestBankingSystem::test_login_incorrect_password",
+            "tests/test_banking_system.py::TestBankingSystem::test_create_account",
+            "tests/test_banking_system.py::TestBankingSystem::test_create_account_invalid_account_number",
+            "tests/test_banking_system.py::TestBankingSystem::test_create_checking_account_insufficient_balance",
+            "tests/test_banking_system.py::TestBankingSystem::test_notifications",
+            "tests/test_banking_system.py::TestBankingSystem::test_calculate_interest",
+            "tests/test_banking_system.py::TestBankingSystem::test_login_account_not_found",
+            "tests/test_banking_system.py::TestBankingSystem::test_login_success",
+            "tests/test_banking_system.py::TestBankingSystem::test_create_account_with_invalid_type",
+            "tests/test_banking_system.py::TestBankingSystem::test_loan_repayment",
+            "tests/test_banking_system.py::TestBankingSystem::test_recurring_deposit",
+            "tests/test_banking_system.py::TestBankingSystem::test_generate_account_statement",
+            "tests/test_banking_system.py::TestBankingSystem::test_logout",
+            "tests/test_banking_system.py::TestBankingSystem::test_account_type_change",
+            "tests/test_banking_system.py::TestBankingSystem::test_list_accounts",
+            "tests/test_banking_system.py::TestBankingSystem::test_set_interest_rate_success"
         ],
         "code.banking_system.x\u01c1BankingSystem\u01c1__init__": [
-            "tests/test_banking_system.py::TestBankingSystem::test_create_account",
+            "tests/test_banking_system.py::TestBankingSystem::test_apply_for_loan_exceeds_limit",
+            "tests/test_banking_system.py::TestBankingSystem::test_set_spending_limit",
+            "tests/test_banking_system.py::TestBankingSystem::test_create_savings_account_insufficient_balance",
+            "tests/test_banking_system.py::TestBankingSystem::test_deposit_invalid_amount",
+            "tests/test_banking_system.py::TestBankingSystem::test_transaction_history",
+            "tests/test_banking_system.py::TestBankingSystem::test_account_suspension_and_activation",
+            "tests/test_banking_system.py::TestBankingSystem::test_password_change",
+            "tests/test_banking_system.py::TestBankingSystem::test_transfer_money",
+            "tests/test_banking_system.py::TestBankingSystem::test_get_balance",
             "tests/test_banking_system.py::TestBankingSystem::test_add_fixed_deposit",
-            "tests/test_banking_system.py::TestBankingSystem::test_account_balance",
-            "tests/test_banking_system.py::TestBankingSystem::test_withdraw",
-            "tests/test_banking_system.py::TestBankingSystem::test_deposit",
-            "tests/test_banking_system.py::TestBankingSystem::test_apply_for_loan",
-            "tests/test_banking_system.py::TestBankingSystem::test_login",
-            "tests/test_banking_system.py::TestBankingSystem::test_logout"
+            "tests/test_banking_system.py::TestBankingSystem::test_overdraft_protection",
+            "tests/test_banking_system.py::TestBankingSystem::test_set_interest_rate_invalid_account_type",
+            "tests/test_banking_system.py::TestBankingSystem::test_login_incorrect_password",
+            "tests/test_banking_system.py::TestBankingSystem::test_create_account",
+            "tests/test_banking_system.py::TestBankingSystem::test_create_account_invalid_account_number",
+            "tests/test_banking_system.py::TestBankingSystem::test_create_checking_account_insufficient_balance",
+            "tests/test_banking_system.py::TestBankingSystem::test_notifications",
+            "tests/test_banking_system.py::TestBankingSystem::test_calculate_interest",
+            "tests/test_banking_system.py::TestBankingSystem::test_login_account_not_found",
+            "tests/test_banking_system.py::TestBankingSystem::test_login_success",
+            "tests/test_banking_system.py::TestBankingSystem::test_create_account_with_invalid_type",
+            "tests/test_banking_system.py::TestBankingSystem::test_loan_repayment",
+            "tests/test_banking_system.py::TestBankingSystem::test_recurring_deposit",
+            "tests/test_banking_system.py::TestBankingSystem::test_generate_account_statement",
+            "tests/test_banking_system.py::TestBankingSystem::test_logout",
+            "tests/test_banking_system.py::TestBankingSystem::test_account_type_change",
+            "tests/test_banking_system.py::TestBankingSystem::test_list_accounts",
+            "tests/test_banking_system.py::TestBankingSystem::test_set_interest_rate_success"
         ],
         "code.banking_system.x\u01c1Account\u01c1get_balance": [
-            "tests/test_banking_system.py::TestBankingSystem::test_account_balance"
+            "tests/test_banking_system.py::TestBankingSystem::test_get_balance",
+            "tests/test_banking_system.py::TestBankingSystem::test_calculate_interest"
         ],
         "code.banking_system.x\u01c1BankingSystem\u01c1create_account": [
-            "tests/test_banking_system.py::TestBankingSystem::test_create_account",
+            "tests/test_banking_system.py::TestBankingSystem::test_apply_for_loan_exceeds_limit",
+            "tests/test_banking_system.py::TestBankingSystem::test_set_spending_limit",
+            "tests/test_banking_system.py::TestBankingSystem::test_create_savings_account_insufficient_balance",
+            "tests/test_banking_system.py::TestBankingSystem::test_deposit_invalid_amount",
+            "tests/test_banking_system.py::TestBankingSystem::test_transaction_history",
+            "tests/test_banking_system.py::TestBankingSystem::test_account_suspension_and_activation",
+            "tests/test_banking_system.py::TestBankingSystem::test_password_change",
+            "tests/test_banking_system.py::TestBankingSystem::test_transfer_money",
+            "tests/test_banking_system.py::TestBankingSystem::test_get_balance",
             "tests/test_banking_system.py::TestBankingSystem::test_add_fixed_deposit",
-            "tests/test_banking_system.py::TestBankingSystem::test_account_balance",
-            "tests/test_banking_system.py::TestBankingSystem::test_withdraw",
-            "tests/test_banking_system.py::TestBankingSystem::test_deposit",
-            "tests/test_banking_system.py::TestBankingSystem::test_apply_for_loan",
-            "tests/test_banking_system.py::TestBankingSystem::test_login",
-            "tests/test_banking_system.py::TestBankingSystem::test_logout"
+            "tests/test_banking_system.py::TestBankingSystem::test_overdraft_protection",
+            "tests/test_banking_system.py::TestBankingSystem::test_set_interest_rate_invalid_account_type",
+            "tests/test_banking_system.py::TestBankingSystem::test_login_incorrect_password",
+            "tests/test_banking_system.py::TestBankingSystem::test_create_account",
+            "tests/test_banking_system.py::TestBankingSystem::test_create_account_invalid_account_number",
+            "tests/test_banking_system.py::TestBankingSystem::test_create_checking_account_insufficient_balance",
+            "tests/test_banking_system.py::TestBankingSystem::test_notifications",
+            "tests/test_banking_system.py::TestBankingSystem::test_calculate_interest",
+            "tests/test_banking_system.py::TestBankingSystem::test_login_account_not_found",
+            "tests/test_banking_system.py::TestBankingSystem::test_login_success",
+            "tests/test_banking_system.py::TestBankingSystem::test_create_account_with_invalid_type",
+            "tests/test_banking_system.py::TestBankingSystem::test_loan_repayment",
+            "tests/test_banking_system.py::TestBankingSystem::test_recurring_deposit",
+            "tests/test_banking_system.py::TestBankingSystem::test_generate_account_statement",
+            "tests/test_banking_system.py::TestBankingSystem::test_logout",
+            "tests/test_banking_system.py::TestBankingSystem::test_account_type_change",
+            "tests/test_banking_system.py::TestBankingSystem::test_list_accounts",
+            "tests/test_banking_system.py::TestBankingSystem::test_set_interest_rate_success"
         ],
         "code.banking_system.x\u01c1Account\u01c1add_fixed_deposit": [
             "tests/test_banking_system.py::TestBankingSystem::test_add_fixed_deposit"
         ],
         "code.banking_system.x\u01c1Account\u01c1_log_transaction": [
+            "tests/test_banking_system.py::TestBankingSystem::test_generate_account_statement",
+            "tests/test_banking_system.py::TestBankingSystem::test_notifications",
+            "tests/test_banking_system.py::TestBankingSystem::test_transfer_money",
+            "tests/test_banking_system.py::TestBankingSystem::test_calculate_interest",
+            "tests/test_banking_system.py::TestBankingSystem::test_get_balance",
             "tests/test_banking_system.py::TestBankingSystem::test_add_fixed_deposit",
-            "tests/test_banking_system.py::TestBankingSystem::test_deposit",
-            "tests/test_banking_system.py::TestBankingSystem::test_withdraw"
+            "tests/test_banking_system.py::TestBankingSystem::test_transaction_history",
+            "tests/test_banking_system.py::TestBankingSystem::test_overdraft_protection",
+            "tests/test_banking_system.py::TestBankingSystem::test_account_suspension_and_activation",
+            "tests/test_banking_system.py::TestBankingSystem::test_recurring_deposit",
+            "tests/test_banking_system.py::TestBankingSystem::test_loan_repayment"
         ],
         "code.banking_system.x\u01c1Account\u01c1apply_for_loan": [
-            "tests/test_banking_system.py::TestBankingSystem::test_apply_for_loan"
+            "tests/test_banking_system.py::TestBankingSystem::test_apply_for_loan_exceeds_limit",
+            "tests/test_banking_system.py::TestBankingSystem::test_loan_repayment"
         ],
         "code.banking_system.x\u01c1Account\u01c1deposit": [
-            "tests/test_banking_system.py::TestBankingSystem::test_deposit"
+            "tests/test_banking_system.py::TestBankingSystem::test_generate_account_statement",
+            "tests/test_banking_system.py::TestBankingSystem::test_notifications",
+            "tests/test_banking_system.py::TestBankingSystem::test_transfer_money",
+            "tests/test_banking_system.py::TestBankingSystem::test_deposit_invalid_amount",
+            "tests/test_banking_system.py::TestBankingSystem::test_get_balance",
+            "tests/test_banking_system.py::TestBankingSystem::test_transaction_history",
+            "tests/test_banking_system.py::TestBankingSystem::test_account_suspension_and_activation"
         ],
         "code.banking_system.x\u01c1BankingSystem\u01c1login": [
-            "tests/test_banking_system.py::TestBankingSystem::test_login",
-            "tests/test_banking_system.py::TestBankingSystem::test_logout"
+            "tests/test_banking_system.py::TestBankingSystem::test_logout",
+            "tests/test_banking_system.py::TestBankingSystem::test_login_success",
+            "tests/test_banking_system.py::TestBankingSystem::test_login_account_not_found",
+            "tests/test_banking_system.py::TestBankingSystem::test_login_incorrect_password"
         ],
         "code.banking_system.x\u01c1Account\u01c1verify_password": [
-            "tests/test_banking_system.py::TestBankingSystem::test_login",
-            "tests/test_banking_system.py::TestBankingSystem::test_logout"
+            "tests/test_banking_system.py::TestBankingSystem::test_logout",
+            "tests/test_banking_system.py::TestBankingSystem::test_login_success",
+            "tests/test_banking_system.py::TestBankingSystem::test_password_change",
+            "tests/test_banking_system.py::TestBankingSystem::test_login_incorrect_password"
         ],
         "code.banking_system.x\u01c1BankingSystem\u01c1logout": [
             "tests/test_banking_system.py::TestBankingSystem::test_logout"
         ],
         "code.banking_system.x\u01c1Account\u01c1set_spending_limit": [
-            "tests/test_banking_system.py::TestBankingSystem::test_withdraw"
+            "tests/test_banking_system.py::TestBankingSystem::test_set_spending_limit"
         ],
         "code.banking_system.x\u01c1Account\u01c1withdraw": [
-            "tests/test_banking_system.py::TestBankingSystem::test_withdraw"
+            "tests/test_banking_system.py::TestBankingSystem::test_notifications",
+            "tests/test_banking_system.py::TestBankingSystem::test_get_balance",
+            "tests/test_banking_system.py::TestBankingSystem::test_overdraft_protection",
+            "tests/test_banking_system.py::TestBankingSystem::test_transaction_history"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1get_transaction_history": [
+            "tests/test_banking_system.py::TestBankingSystem::test_calculate_interest",
+            "tests/test_banking_system.py::TestBankingSystem::test_transaction_history"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1activate_account": [
+            "tests/test_banking_system.py::TestBankingSystem::test_account_suspension_and_activation"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1suspend_account": [
+            "tests/test_banking_system.py::TestBankingSystem::test_account_suspension_and_activation"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1change_password": [
+            "tests/test_banking_system.py::TestBankingSystem::test_password_change"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1set_overdraft_protection": [
+            "tests/test_banking_system.py::TestBankingSystem::test_transfer_money",
+            "tests/test_banking_system.py::TestBankingSystem::test_overdraft_protection"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1transfer_money": [
+            "tests/test_banking_system.py::TestBankingSystem::test_transfer_money"
+        ],
+        "code.banking_system.x\u01c1BankingSystem\u01c1set_interest_rate": [
+            "tests/test_banking_system.py::TestBankingSystem::test_set_interest_rate_success",
+            "tests/test_banking_system.py::TestBankingSystem::test_set_interest_rate_invalid_account_type"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1view_notifications": [
+            "tests/test_banking_system.py::TestBankingSystem::test_notifications"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1calculate_interest": [
+            "tests/test_banking_system.py::TestBankingSystem::test_calculate_interest"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1repay_loan": [
+            "tests/test_banking_system.py::TestBankingSystem::test_loan_repayment"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1view_recurring_deposit": [
+            "tests/test_banking_system.py::TestBankingSystem::test_recurring_deposit"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1start_recurring_deposit": [
+            "tests/test_banking_system.py::TestBankingSystem::test_recurring_deposit"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1generate_account_statement": [
+            "tests/test_banking_system.py::TestBankingSystem::test_generate_account_statement"
+        ],
+        "code.banking_system.x\u01c1Account\u01c1change_account_type": [
+            "tests/test_banking_system.py::TestBankingSystem::test_account_type_change"
+        ],
+        "code.banking_system.x\u01c1BankingSystem\u01c1list_accounts": [
+            "tests/test_banking_system.py::TestBankingSystem::test_list_accounts"
         ]
     },
     "duration_by_test": {
@@ -73,7 +204,32 @@
         "tests/test_banking_system.py::TestBankingSystem::test_deposit": 4.91669999999611e-05,
         "tests/test_banking_system.py::TestBankingSystem::test_login": 4.620899999996375e-05,
         "tests/test_banking_system.py::TestBankingSystem::test_logout": 4.362499999999159e-05,
-        "tests/test_banking_system.py::TestBankingSystem::test_withdraw": 6.062499999998083e-05
+        "tests/test_banking_system.py::TestBankingSystem::test_withdraw": 6.062499999998083e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_apply_for_loan_exceeds_limit": 6.0208000000006034e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_set_spending_limit": 5.425000000003344e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_create_savings_account_insufficient_balance": 4.966699999997548e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_deposit_invalid_amount": 4.920800000002279e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_transaction_history": 5.0541999999986764e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_account_suspension_and_activation": 4.3791000000015234e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_password_change": 4.304100000002142e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_transfer_money": 4.399999999998849e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_get_balance": 4.3500000000029626e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_overdraft_protection": 4.2958000000037355e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_set_interest_rate_invalid_account_type": 4.175000000000706e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_login_incorrect_password": 4.166599999999576e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_create_account_invalid_account_number": 4.070900000002764e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_create_checking_account_insufficient_balance": 4.083300000001788e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_notifications": 4.28339999999916e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_calculate_interest": 4.950000000003563e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_login_account_not_found": 5.11669999999631e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_login_success": 4.27919999999582e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_create_account_with_invalid_type": 4.23749999999834e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_loan_repayment": 4.325000000005019e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_recurring_deposit": 4.312499999997721e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_generate_account_statement": 5.0541999999986764e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_account_type_change": 4.279099999998648e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_list_accounts": 4.2249999999965926e-05,
+        "tests/test_banking_system.py::TestBankingSystem::test_set_interest_rate_success": 5.975000000002506e-05
     },
     "stats_time": 0.16067299999999998
 }

@@ -683,15 +683,6 @@ class Account:
 
 
     def xǁAccountǁwithdraw__mutmut_orig(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("Withdrawal amount must be positive.")
-        if self.spending_limit and amount > self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("Withdrawal amount exceeds spending limit.")
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -708,190 +699,6 @@ class Account:
             logger.info(f"Withdrew {amount} from account {self.account_number}. New balance: {self.balance}")
 
     def xǁAccountǁwithdraw__mutmut_1(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("XXAccount is suspended.XX")
-        if amount <= 0:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("Withdrawal amount must be positive.")
-        if self.spending_limit and amount > self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("Withdrawal amount exceeds spending limit.")
-        if amount > self.balance:
-            if self.overdraft_protection:
-                logger.info(f"Overdraft protection used for account {self.account_number}")
-                self.balance -= amount
-                self._log_transaction("Withdrawal (Overdraft)", amount)
-                self.notifications.append(f"Used overdraft protection. New balance: {self.balance}")
-            else:
-                logger.warning(f"Insufficient funds in account {self.account_number}")
-                raise ValueError("Insufficient funds.")
-        else:
-            self.balance -= amount
-            self._log_transaction("Withdrawal", amount)
-            self.notifications.append(f"Withdrew {amount} from your account. New balance: {self.balance}")
-            logger.info(f"Withdrew {amount} from account {self.account_number}. New balance: {self.balance}")
-
-    def xǁAccountǁwithdraw__mutmut_2(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("Account is suspended.")
-        if amount < 0:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("Withdrawal amount must be positive.")
-        if self.spending_limit and amount > self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("Withdrawal amount exceeds spending limit.")
-        if amount > self.balance:
-            if self.overdraft_protection:
-                logger.info(f"Overdraft protection used for account {self.account_number}")
-                self.balance -= amount
-                self._log_transaction("Withdrawal (Overdraft)", amount)
-                self.notifications.append(f"Used overdraft protection. New balance: {self.balance}")
-            else:
-                logger.warning(f"Insufficient funds in account {self.account_number}")
-                raise ValueError("Insufficient funds.")
-        else:
-            self.balance -= amount
-            self._log_transaction("Withdrawal", amount)
-            self.notifications.append(f"Withdrew {amount} from your account. New balance: {self.balance}")
-            logger.info(f"Withdrew {amount} from account {self.account_number}. New balance: {self.balance}")
-
-    def xǁAccountǁwithdraw__mutmut_3(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 1:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("Withdrawal amount must be positive.")
-        if self.spending_limit and amount > self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("Withdrawal amount exceeds spending limit.")
-        if amount > self.balance:
-            if self.overdraft_protection:
-                logger.info(f"Overdraft protection used for account {self.account_number}")
-                self.balance -= amount
-                self._log_transaction("Withdrawal (Overdraft)", amount)
-                self.notifications.append(f"Used overdraft protection. New balance: {self.balance}")
-            else:
-                logger.warning(f"Insufficient funds in account {self.account_number}")
-                raise ValueError("Insufficient funds.")
-        else:
-            self.balance -= amount
-            self._log_transaction("Withdrawal", amount)
-            self.notifications.append(f"Withdrew {amount} from your account. New balance: {self.balance}")
-            logger.info(f"Withdrew {amount} from account {self.account_number}. New balance: {self.balance}")
-
-    def xǁAccountǁwithdraw__mutmut_4(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("XXWithdrawal amount must be positive.XX")
-        if self.spending_limit and amount > self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("Withdrawal amount exceeds spending limit.")
-        if amount > self.balance:
-            if self.overdraft_protection:
-                logger.info(f"Overdraft protection used for account {self.account_number}")
-                self.balance -= amount
-                self._log_transaction("Withdrawal (Overdraft)", amount)
-                self.notifications.append(f"Used overdraft protection. New balance: {self.balance}")
-            else:
-                logger.warning(f"Insufficient funds in account {self.account_number}")
-                raise ValueError("Insufficient funds.")
-        else:
-            self.balance -= amount
-            self._log_transaction("Withdrawal", amount)
-            self.notifications.append(f"Withdrew {amount} from your account. New balance: {self.balance}")
-            logger.info(f"Withdrew {amount} from account {self.account_number}. New balance: {self.balance}")
-
-    def xǁAccountǁwithdraw__mutmut_5(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("Withdrawal amount must be positive.")
-        if self.spending_limit and amount >= self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("Withdrawal amount exceeds spending limit.")
-        if amount > self.balance:
-            if self.overdraft_protection:
-                logger.info(f"Overdraft protection used for account {self.account_number}")
-                self.balance -= amount
-                self._log_transaction("Withdrawal (Overdraft)", amount)
-                self.notifications.append(f"Used overdraft protection. New balance: {self.balance}")
-            else:
-                logger.warning(f"Insufficient funds in account {self.account_number}")
-                raise ValueError("Insufficient funds.")
-        else:
-            self.balance -= amount
-            self._log_transaction("Withdrawal", amount)
-            self.notifications.append(f"Withdrew {amount} from your account. New balance: {self.balance}")
-            logger.info(f"Withdrew {amount} from account {self.account_number}. New balance: {self.balance}")
-
-    def xǁAccountǁwithdraw__mutmut_6(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("Withdrawal amount must be positive.")
-        if self.spending_limit or amount > self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("Withdrawal amount exceeds spending limit.")
-        if amount > self.balance:
-            if self.overdraft_protection:
-                logger.info(f"Overdraft protection used for account {self.account_number}")
-                self.balance -= amount
-                self._log_transaction("Withdrawal (Overdraft)", amount)
-                self.notifications.append(f"Used overdraft protection. New balance: {self.balance}")
-            else:
-                logger.warning(f"Insufficient funds in account {self.account_number}")
-                raise ValueError("Insufficient funds.")
-        else:
-            self.balance -= amount
-            self._log_transaction("Withdrawal", amount)
-            self.notifications.append(f"Withdrew {amount} from your account. New balance: {self.balance}")
-            logger.info(f"Withdrew {amount} from account {self.account_number}. New balance: {self.balance}")
-
-    def xǁAccountǁwithdraw__mutmut_7(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("Withdrawal amount must be positive.")
-        if self.spending_limit and amount > self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("XXWithdrawal amount exceeds spending limit.XX")
-        if amount > self.balance:
-            if self.overdraft_protection:
-                logger.info(f"Overdraft protection used for account {self.account_number}")
-                self.balance -= amount
-                self._log_transaction("Withdrawal (Overdraft)", amount)
-                self.notifications.append(f"Used overdraft protection. New balance: {self.balance}")
-            else:
-                logger.warning(f"Insufficient funds in account {self.account_number}")
-                raise ValueError("Insufficient funds.")
-        else:
-            self.balance -= amount
-            self._log_transaction("Withdrawal", amount)
-            self.notifications.append(f"Withdrew {amount} from your account. New balance: {self.balance}")
-            logger.info(f"Withdrew {amount} from account {self.account_number}. New balance: {self.balance}")
-
-    def xǁAccountǁwithdraw__mutmut_8(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("Withdrawal amount must be positive.")
-        if self.spending_limit and amount > self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("Withdrawal amount exceeds spending limit.")
         if amount >= self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -907,16 +714,7 @@ class Account:
             self.notifications.append(f"Withdrew {amount} from your account. New balance: {self.balance}")
             logger.info(f"Withdrew {amount} from account {self.account_number}. New balance: {self.balance}")
 
-    def xǁAccountǁwithdraw__mutmut_9(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("Withdrawal amount must be positive.")
-        if self.spending_limit and amount > self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("Withdrawal amount exceeds spending limit.")
+    def xǁAccountǁwithdraw__mutmut_2(self, amount):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -932,16 +730,7 @@ class Account:
             self.notifications.append(f"Withdrew {amount} from your account. New balance: {self.balance}")
             logger.info(f"Withdrew {amount} from account {self.account_number}. New balance: {self.balance}")
 
-    def xǁAccountǁwithdraw__mutmut_10(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("Withdrawal amount must be positive.")
-        if self.spending_limit and amount > self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("Withdrawal amount exceeds spending limit.")
+    def xǁAccountǁwithdraw__mutmut_3(self, amount):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -957,16 +746,7 @@ class Account:
             self.notifications.append(f"Withdrew {amount} from your account. New balance: {self.balance}")
             logger.info(f"Withdrew {amount} from account {self.account_number}. New balance: {self.balance}")
 
-    def xǁAccountǁwithdraw__mutmut_11(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("Withdrawal amount must be positive.")
-        if self.spending_limit and amount > self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("Withdrawal amount exceeds spending limit.")
+    def xǁAccountǁwithdraw__mutmut_4(self, amount):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -982,16 +762,7 @@ class Account:
             self.notifications.append(f"Withdrew {amount} from your account. New balance: {self.balance}")
             logger.info(f"Withdrew {amount} from account {self.account_number}. New balance: {self.balance}")
 
-    def xǁAccountǁwithdraw__mutmut_12(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("Withdrawal amount must be positive.")
-        if self.spending_limit and amount > self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("Withdrawal amount exceeds spending limit.")
+    def xǁAccountǁwithdraw__mutmut_5(self, amount):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -1007,16 +778,7 @@ class Account:
             self.notifications.append(f"Withdrew {amount} from your account. New balance: {self.balance}")
             logger.info(f"Withdrew {amount} from account {self.account_number}. New balance: {self.balance}")
 
-    def xǁAccountǁwithdraw__mutmut_13(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("Withdrawal amount must be positive.")
-        if self.spending_limit and amount > self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("Withdrawal amount exceeds spending limit.")
+    def xǁAccountǁwithdraw__mutmut_6(self, amount):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -1032,16 +794,7 @@ class Account:
             self.notifications.append(f"Withdrew {amount} from your account. New balance: {self.balance}")
             logger.info(f"Withdrew {amount} from account {self.account_number}. New balance: {self.balance}")
 
-    def xǁAccountǁwithdraw__mutmut_14(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("Withdrawal amount must be positive.")
-        if self.spending_limit and amount > self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("Withdrawal amount exceeds spending limit.")
+    def xǁAccountǁwithdraw__mutmut_7(self, amount):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -1057,16 +810,7 @@ class Account:
             self.notifications.append(f"Withdrew {amount} from your account. New balance: {self.balance}")
             logger.info(f"Withdrew {amount} from account {self.account_number}. New balance: {self.balance}")
 
-    def xǁAccountǁwithdraw__mutmut_15(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("Withdrawal amount must be positive.")
-        if self.spending_limit and amount > self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("Withdrawal amount exceeds spending limit.")
+    def xǁAccountǁwithdraw__mutmut_8(self, amount):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -1082,16 +826,7 @@ class Account:
             self.notifications.append(f"Withdrew {amount} from your account. New balance: {self.balance}")
             logger.info(f"Withdrew {amount} from account {self.account_number}. New balance: {self.balance}")
 
-    def xǁAccountǁwithdraw__mutmut_16(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("Withdrawal amount must be positive.")
-        if self.spending_limit and amount > self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("Withdrawal amount exceeds spending limit.")
+    def xǁAccountǁwithdraw__mutmut_9(self, amount):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -1107,16 +842,7 @@ class Account:
             self.notifications.append(f"Withdrew {amount} from your account. New balance: {self.balance}")
             logger.info(f"Withdrew {amount} from account {self.account_number}. New balance: {self.balance}")
 
-    def xǁAccountǁwithdraw__mutmut_17(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("Withdrawal amount must be positive.")
-        if self.spending_limit and amount > self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("Withdrawal amount exceeds spending limit.")
+    def xǁAccountǁwithdraw__mutmut_10(self, amount):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -1132,16 +858,7 @@ class Account:
             self.notifications.append(f"Withdrew {amount} from your account. New balance: {self.balance}")
             logger.info(f"Withdrew {amount} from account {self.account_number}. New balance: {self.balance}")
 
-    def xǁAccountǁwithdraw__mutmut_18(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("Withdrawal amount must be positive.")
-        if self.spending_limit and amount > self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("Withdrawal amount exceeds spending limit.")
+    def xǁAccountǁwithdraw__mutmut_11(self, amount):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -1157,16 +874,7 @@ class Account:
             self.notifications.append(f"Withdrew {amount} from your account. New balance: {self.balance}")
             logger.info(f"Withdrew {amount} from account {self.account_number}. New balance: {self.balance}")
 
-    def xǁAccountǁwithdraw__mutmut_19(self, amount):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Withdrawal failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid withdrawal amount: {amount}")
-            raise ValueError("Withdrawal amount must be positive.")
-        if self.spending_limit and amount > self.spending_limit:
-            logger.warning(f"Withdrawal amount exceeds spending limit for account {self.account_number}")
-            raise ValueError("Withdrawal amount exceeds spending limit.")
+    def xǁAccountǁwithdraw__mutmut_12(self, amount):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -1194,14 +902,7 @@ class Account:
         'xǁAccountǁwithdraw__mutmut_9': xǁAccountǁwithdraw__mutmut_9, 
         'xǁAccountǁwithdraw__mutmut_10': xǁAccountǁwithdraw__mutmut_10, 
         'xǁAccountǁwithdraw__mutmut_11': xǁAccountǁwithdraw__mutmut_11, 
-        'xǁAccountǁwithdraw__mutmut_12': xǁAccountǁwithdraw__mutmut_12, 
-        'xǁAccountǁwithdraw__mutmut_13': xǁAccountǁwithdraw__mutmut_13, 
-        'xǁAccountǁwithdraw__mutmut_14': xǁAccountǁwithdraw__mutmut_14, 
-        'xǁAccountǁwithdraw__mutmut_15': xǁAccountǁwithdraw__mutmut_15, 
-        'xǁAccountǁwithdraw__mutmut_16': xǁAccountǁwithdraw__mutmut_16, 
-        'xǁAccountǁwithdraw__mutmut_17': xǁAccountǁwithdraw__mutmut_17, 
-        'xǁAccountǁwithdraw__mutmut_18': xǁAccountǁwithdraw__mutmut_18, 
-        'xǁAccountǁwithdraw__mutmut_19': xǁAccountǁwithdraw__mutmut_19
+        'xǁAccountǁwithdraw__mutmut_12': xǁAccountǁwithdraw__mutmut_12
     }
 
     def withdraw(self, *args, **kwargs):
@@ -2936,12 +2637,6 @@ class Account:
 
 
     def xǁAccountǁtransfer_money__mutmut_orig(self, amount, recipient_account):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Transfer failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid transfer amount: {amount}")
-            raise ValueError("Transfer amount must be positive.")
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -2960,108 +2655,6 @@ class Account:
             logger.info(f"Transferred {amount} to account {recipient_account.account_number} from account {self.account_number}")
 
     def xǁAccountǁtransfer_money__mutmut_1(self, amount, recipient_account):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Transfer failed.")
-            raise ValueError("XXAccount is suspended.XX")
-        if amount <= 0:
-            logger.warning(f"Invalid transfer amount: {amount}")
-            raise ValueError("Transfer amount must be positive.")
-        if amount > self.balance:
-            if self.overdraft_protection:
-                logger.info(f"Overdraft protection used for account {self.account_number}")
-                self.balance -= amount
-                self._log_transaction("Transfer (Overdraft)", amount)
-                recipient_account.deposit(amount)
-                self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number} using overdraft protection.")
-            else:
-                logger.warning(f"Insufficient funds for transfer from account {self.account_number}")
-                raise ValueError("Insufficient funds for transfer.")
-        else:
-            self.balance -= amount
-            self._log_transaction("Transfer", amount)
-            recipient_account.deposit(amount)
-            self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number}.")
-            logger.info(f"Transferred {amount} to account {recipient_account.account_number} from account {self.account_number}")
-
-    def xǁAccountǁtransfer_money__mutmut_2(self, amount, recipient_account):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Transfer failed.")
-            raise ValueError("Account is suspended.")
-        if amount < 0:
-            logger.warning(f"Invalid transfer amount: {amount}")
-            raise ValueError("Transfer amount must be positive.")
-        if amount > self.balance:
-            if self.overdraft_protection:
-                logger.info(f"Overdraft protection used for account {self.account_number}")
-                self.balance -= amount
-                self._log_transaction("Transfer (Overdraft)", amount)
-                recipient_account.deposit(amount)
-                self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number} using overdraft protection.")
-            else:
-                logger.warning(f"Insufficient funds for transfer from account {self.account_number}")
-                raise ValueError("Insufficient funds for transfer.")
-        else:
-            self.balance -= amount
-            self._log_transaction("Transfer", amount)
-            recipient_account.deposit(amount)
-            self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number}.")
-            logger.info(f"Transferred {amount} to account {recipient_account.account_number} from account {self.account_number}")
-
-    def xǁAccountǁtransfer_money__mutmut_3(self, amount, recipient_account):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Transfer failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 1:
-            logger.warning(f"Invalid transfer amount: {amount}")
-            raise ValueError("Transfer amount must be positive.")
-        if amount > self.balance:
-            if self.overdraft_protection:
-                logger.info(f"Overdraft protection used for account {self.account_number}")
-                self.balance -= amount
-                self._log_transaction("Transfer (Overdraft)", amount)
-                recipient_account.deposit(amount)
-                self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number} using overdraft protection.")
-            else:
-                logger.warning(f"Insufficient funds for transfer from account {self.account_number}")
-                raise ValueError("Insufficient funds for transfer.")
-        else:
-            self.balance -= amount
-            self._log_transaction("Transfer", amount)
-            recipient_account.deposit(amount)
-            self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number}.")
-            logger.info(f"Transferred {amount} to account {recipient_account.account_number} from account {self.account_number}")
-
-    def xǁAccountǁtransfer_money__mutmut_4(self, amount, recipient_account):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Transfer failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid transfer amount: {amount}")
-            raise ValueError("XXTransfer amount must be positive.XX")
-        if amount > self.balance:
-            if self.overdraft_protection:
-                logger.info(f"Overdraft protection used for account {self.account_number}")
-                self.balance -= amount
-                self._log_transaction("Transfer (Overdraft)", amount)
-                recipient_account.deposit(amount)
-                self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number} using overdraft protection.")
-            else:
-                logger.warning(f"Insufficient funds for transfer from account {self.account_number}")
-                raise ValueError("Insufficient funds for transfer.")
-        else:
-            self.balance -= amount
-            self._log_transaction("Transfer", amount)
-            recipient_account.deposit(amount)
-            self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number}.")
-            logger.info(f"Transferred {amount} to account {recipient_account.account_number} from account {self.account_number}")
-
-    def xǁAccountǁtransfer_money__mutmut_5(self, amount, recipient_account):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Transfer failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid transfer amount: {amount}")
-            raise ValueError("Transfer amount must be positive.")
         if amount >= self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -3079,13 +2672,7 @@ class Account:
             self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number}.")
             logger.info(f"Transferred {amount} to account {recipient_account.account_number} from account {self.account_number}")
 
-    def xǁAccountǁtransfer_money__mutmut_6(self, amount, recipient_account):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Transfer failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid transfer amount: {amount}")
-            raise ValueError("Transfer amount must be positive.")
+    def xǁAccountǁtransfer_money__mutmut_2(self, amount, recipient_account):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -3103,13 +2690,7 @@ class Account:
             self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number}.")
             logger.info(f"Transferred {amount} to account {recipient_account.account_number} from account {self.account_number}")
 
-    def xǁAccountǁtransfer_money__mutmut_7(self, amount, recipient_account):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Transfer failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid transfer amount: {amount}")
-            raise ValueError("Transfer amount must be positive.")
+    def xǁAccountǁtransfer_money__mutmut_3(self, amount, recipient_account):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -3127,13 +2708,7 @@ class Account:
             self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number}.")
             logger.info(f"Transferred {amount} to account {recipient_account.account_number} from account {self.account_number}")
 
-    def xǁAccountǁtransfer_money__mutmut_8(self, amount, recipient_account):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Transfer failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid transfer amount: {amount}")
-            raise ValueError("Transfer amount must be positive.")
+    def xǁAccountǁtransfer_money__mutmut_4(self, amount, recipient_account):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -3151,13 +2726,7 @@ class Account:
             self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number}.")
             logger.info(f"Transferred {amount} to account {recipient_account.account_number} from account {self.account_number}")
 
-    def xǁAccountǁtransfer_money__mutmut_9(self, amount, recipient_account):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Transfer failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid transfer amount: {amount}")
-            raise ValueError("Transfer amount must be positive.")
+    def xǁAccountǁtransfer_money__mutmut_5(self, amount, recipient_account):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -3175,13 +2744,7 @@ class Account:
             self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number}.")
             logger.info(f"Transferred {amount} to account {recipient_account.account_number} from account {self.account_number}")
 
-    def xǁAccountǁtransfer_money__mutmut_10(self, amount, recipient_account):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Transfer failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid transfer amount: {amount}")
-            raise ValueError("Transfer amount must be positive.")
+    def xǁAccountǁtransfer_money__mutmut_6(self, amount, recipient_account):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -3199,13 +2762,7 @@ class Account:
             self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number}.")
             logger.info(f"Transferred {amount} to account {recipient_account.account_number} from account {self.account_number}")
 
-    def xǁAccountǁtransfer_money__mutmut_11(self, amount, recipient_account):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Transfer failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid transfer amount: {amount}")
-            raise ValueError("Transfer amount must be positive.")
+    def xǁAccountǁtransfer_money__mutmut_7(self, amount, recipient_account):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -3223,13 +2780,7 @@ class Account:
             self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number}.")
             logger.info(f"Transferred {amount} to account {recipient_account.account_number} from account {self.account_number}")
 
-    def xǁAccountǁtransfer_money__mutmut_12(self, amount, recipient_account):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Transfer failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid transfer amount: {amount}")
-            raise ValueError("Transfer amount must be positive.")
+    def xǁAccountǁtransfer_money__mutmut_8(self, amount, recipient_account):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -3247,13 +2798,7 @@ class Account:
             self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number}.")
             logger.info(f"Transferred {amount} to account {recipient_account.account_number} from account {self.account_number}")
 
-    def xǁAccountǁtransfer_money__mutmut_13(self, amount, recipient_account):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Transfer failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid transfer amount: {amount}")
-            raise ValueError("Transfer amount must be positive.")
+    def xǁAccountǁtransfer_money__mutmut_9(self, amount, recipient_account):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -3271,13 +2816,7 @@ class Account:
             self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number}.")
             logger.info(f"Transferred {amount} to account {recipient_account.account_number} from account {self.account_number}")
 
-    def xǁAccountǁtransfer_money__mutmut_14(self, amount, recipient_account):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Transfer failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid transfer amount: {amount}")
-            raise ValueError("Transfer amount must be positive.")
+    def xǁAccountǁtransfer_money__mutmut_10(self, amount, recipient_account):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -3295,13 +2834,7 @@ class Account:
             self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number}.")
             logger.info(f"Transferred {amount} to account {recipient_account.account_number} from account {self.account_number}")
 
-    def xǁAccountǁtransfer_money__mutmut_15(self, amount, recipient_account):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Transfer failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid transfer amount: {amount}")
-            raise ValueError("Transfer amount must be positive.")
+    def xǁAccountǁtransfer_money__mutmut_11(self, amount, recipient_account):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -3319,13 +2852,7 @@ class Account:
             self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number}.")
             logger.info(f"Transferred {amount} to account {recipient_account.account_number} from account {self.account_number}")
 
-    def xǁAccountǁtransfer_money__mutmut_16(self, amount, recipient_account):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Transfer failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid transfer amount: {amount}")
-            raise ValueError("Transfer amount must be positive.")
+    def xǁAccountǁtransfer_money__mutmut_12(self, amount, recipient_account):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -3343,13 +2870,7 @@ class Account:
             self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number}.")
             logger.info(f"Transferred {amount} to account {recipient_account.account_number} from account {self.account_number}")
 
-    def xǁAccountǁtransfer_money__mutmut_17(self, amount, recipient_account):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Transfer failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid transfer amount: {amount}")
-            raise ValueError("Transfer amount must be positive.")
+    def xǁAccountǁtransfer_money__mutmut_13(self, amount, recipient_account):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -3367,13 +2888,7 @@ class Account:
             self.notifications.append(f"Transferred {amount} to account {recipient_account.account_number}.")
             logger.info(f"Transferred {amount} to account {recipient_account.account_number} from account {self.account_number}")
 
-    def xǁAccountǁtransfer_money__mutmut_18(self, amount, recipient_account):
-        if self.suspended:
-            logger.warning(f"Account {self.account_number} is suspended. Transfer failed.")
-            raise ValueError("Account is suspended.")
-        if amount <= 0:
-            logger.warning(f"Invalid transfer amount: {amount}")
-            raise ValueError("Transfer amount must be positive.")
+    def xǁAccountǁtransfer_money__mutmut_14(self, amount, recipient_account):
         if amount > self.balance:
             if self.overdraft_protection:
                 logger.info(f"Overdraft protection used for account {self.account_number}")
@@ -3405,11 +2920,7 @@ class Account:
         'xǁAccountǁtransfer_money__mutmut_11': xǁAccountǁtransfer_money__mutmut_11, 
         'xǁAccountǁtransfer_money__mutmut_12': xǁAccountǁtransfer_money__mutmut_12, 
         'xǁAccountǁtransfer_money__mutmut_13': xǁAccountǁtransfer_money__mutmut_13, 
-        'xǁAccountǁtransfer_money__mutmut_14': xǁAccountǁtransfer_money__mutmut_14, 
-        'xǁAccountǁtransfer_money__mutmut_15': xǁAccountǁtransfer_money__mutmut_15, 
-        'xǁAccountǁtransfer_money__mutmut_16': xǁAccountǁtransfer_money__mutmut_16, 
-        'xǁAccountǁtransfer_money__mutmut_17': xǁAccountǁtransfer_money__mutmut_17, 
-        'xǁAccountǁtransfer_money__mutmut_18': xǁAccountǁtransfer_money__mutmut_18
+        'xǁAccountǁtransfer_money__mutmut_14': xǁAccountǁtransfer_money__mutmut_14
     }
 
     def transfer_money(self, *args, **kwargs):
@@ -4549,15 +4060,12 @@ class BankingSystem:
 def x_main__mutmut_orig():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -4565,31 +4073,25 @@ def x_main__mutmut_orig():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_1():
     banking_system = None
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -4597,31 +4099,25 @@ def x_main__mutmut_1():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_2():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("XX123456789XX", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -4629,31 +4125,25 @@ def x_main__mutmut_2():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_3():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "XXAliceXX", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -4661,31 +4151,25 @@ def x_main__mutmut_3():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_4():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "XXsavingsXX", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -4693,31 +4177,25 @@ def x_main__mutmut_4():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_5():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2001, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -4725,31 +4203,25 @@ def x_main__mutmut_5():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_6():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "XXalicepassXX")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -4757,31 +4229,25 @@ def x_main__mutmut_6():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_7():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("XX987654321XX", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -4789,31 +4255,25 @@ def x_main__mutmut_7():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_8():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "XXBobXX", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -4821,31 +4281,25 @@ def x_main__mutmut_8():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_9():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "XXcheckingXX", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -4853,31 +4307,25 @@ def x_main__mutmut_9():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_10():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1501, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -4885,31 +4333,25 @@ def x_main__mutmut_10():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_11():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "XXbobpassXX")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -4917,31 +4359,25 @@ def x_main__mutmut_11():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_12():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("XX123456789XX", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -4949,31 +4385,25 @@ def x_main__mutmut_12():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_13():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "XXalicepassXX")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -4981,31 +4411,25 @@ def x_main__mutmut_13():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_14():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = None
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -5013,31 +4437,25 @@ def x_main__mutmut_14():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_15():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(501)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -5045,31 +4463,25 @@ def x_main__mutmut_15():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_16():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(301)
     alice_account.set_spending_limit(1000)
@@ -5077,31 +4489,25 @@ def x_main__mutmut_16():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_17():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1001)
@@ -5109,31 +4515,25 @@ def x_main__mutmut_17():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_18():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -5141,31 +4541,25 @@ def x_main__mutmut_18():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_19():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -5173,31 +4567,25 @@ def x_main__mutmut_19():
     alice_account.repay_loan(2001)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_20():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -5205,31 +4593,25 @@ def x_main__mutmut_20():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1001, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_21():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -5237,31 +4619,25 @@ def x_main__mutmut_21():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 13, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_22():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -5269,31 +4645,25 @@ def x_main__mutmut_22():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 6)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_23():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -5301,31 +4671,25 @@ def x_main__mutmut_23():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("XX987654321XX", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_24():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -5333,31 +4697,25 @@ def x_main__mutmut_24():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "XXbobpassXX")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_25():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -5365,31 +4723,25 @@ def x_main__mutmut_25():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = None
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_26():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -5397,31 +4749,25 @@ def x_main__mutmut_26():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1001)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_27():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -5429,31 +4775,25 @@ def x_main__mutmut_27():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(201)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_28():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -5461,31 +4801,25 @@ def x_main__mutmut_28():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(501, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_29():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -5493,31 +4827,25 @@ def x_main__mutmut_29():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, None)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_30():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -5525,31 +4853,25 @@ def x_main__mutmut_30():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500,)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_31():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -5557,31 +4879,25 @@ def x_main__mutmut_31():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("XXAlice's Notifications:XX", alice_account.view_notifications())
     print("Bob's Notifications:", bob_account.view_notifications())
 
 def x_main__mutmut_32():
     banking_system = BankingSystem()
 
-    # Simulate account creation and login
     banking_system.create_account("123456789", "Alice", "savings", 2000, "alicepass")
     banking_system.create_account("987654321", "Bob", "checking", 1500, "bobpass")
 
-    # Alice logs in
     banking_system.login("123456789", "alicepass")
     alice_account = banking_system.current_user
 
-    # Perform some transactions
     alice_account.deposit(500)
     alice_account.withdraw(300)
     alice_account.set_spending_limit(1000)
@@ -5589,16 +4905,13 @@ def x_main__mutmut_32():
     alice_account.repay_loan(2000)
     alice_account.add_fixed_deposit(1000, 12, 5)
 
-    # Bob logs in
     banking_system.login("987654321", "bobpass")
     bob_account = banking_system.current_user
 
-    # Perform some transactions
     bob_account.deposit(1000)
     bob_account.withdraw(200)
     bob_account.transfer_money(500, alice_account)
 
-    # View notifications and statement
     print("Alice's Notifications:", alice_account.view_notifications())
     print("XXBob's Notifications:XX", bob_account.view_notifications())
 

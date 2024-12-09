@@ -188,6 +188,12 @@ class TestBankingSystem(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.banking_system.create_account(account_number, name, account_type, initial_balance, password, currency)
 
+    def test_apply_for_loan_exceeds_limit(self):
+        loan_amount = 150000 
+        account = self.banking_system.accounts['123456']
+        result = account.apply_for_loan(loan_amount)
+        self.assertFalse(result)
+        self.assertIn(f"Loan of {loan_amount} exceeds your pre-approval limit.", account.notifications)
 
     def test_create_checking_account_insufficient_balance(self):
         account_number = "12346"
