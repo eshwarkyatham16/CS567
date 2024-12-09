@@ -177,6 +177,40 @@ class TestBankingSystem(unittest.TestCase):
         with self.assertRaises(ValueError):
             account.repay_loan(6000)
 
+    def test_create_savings_account_insufficient_balance(self):
+        account_number = "12345"
+        name = "John Doe"
+        account_type = "savings"
+        initial_balance = 500 
+        password = "password"
+        currency = "USD"
+
+        with self.assertRaises(ValueError):
+            self.banking_system.create_account(account_number, name, account_type, initial_balance, password, currency)
+
+
+    def test_create_checking_account_insufficient_balance(self):
+        account_number = "12346"
+        name = "John Doe"
+        account_type = "checking"
+        initial_balance = 300 
+        password = "password"
+        currency = "USD"
+
+        with self.assertRaises(ValueError):
+            self.banking_system.create_account(account_number, name, account_type, initial_balance, password, currency)
+
+    def test_create_account_with_invalid_type(self):
+        account_number = "12347"
+        name = "John Doe"
+        account_type = "business"
+        initial_balance = 1000
+        password = "password"
+        currency = "USD"
+
+        with self.assertRaises(ValueError):
+            self.banking_system.create_account(account_number, name, account_type, initial_balance, password, currency)
+
     def test_set_spending_limit(self):
         limit = 1500
         
